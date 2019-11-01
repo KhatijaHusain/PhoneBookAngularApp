@@ -1,0 +1,19 @@
+<div class='table-responsive'>
+<table class='table table-light table-bordered table-style' 
+  *ngIf='displayedColumns && displayedColumns.length'
+  (click)="tableclick.emit()">
+  <thead>
+    <tr>
+      <th> Sr.No</th>
+      <th> Phone Book Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let col of displayedColumns">
+        <td scope="row">{{col.index}}</td>
+        <td>{{col.PhoneBookName}}</td>       
+    </tr>
+  </tbody>
+</table>
+<app-phonebook-add-modal></app-phonebook-add-modal>
+</div>

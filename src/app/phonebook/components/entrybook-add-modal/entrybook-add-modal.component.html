@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h4 class="modal-title">Entry Book Details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+        <div class="row">
+        <div class="col-5"><label for="Name">Name</label></div>
+        <div class="col-5"><input type="text"></div>
+        </div>   
+        <div class="row">
+        <div class="col-5"><label for="Phone Number">Number</label></div>
+        <div class="col-5"><input type="text"></div>
+        </div>                
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Save click')">Add</button>
+    <button type="button" class="btn btn-outline-dark" (click)="ClearEntry()">Clear</button>
+</div>
