@@ -33,5 +33,4 @@ export class PhoneBookAddModalComponent {
       openEntryBookModal() {
         this.modalService.open(EntryBookAddModalComponent);
       }
-
 }

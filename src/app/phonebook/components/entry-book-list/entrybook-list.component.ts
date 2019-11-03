@@ -18,29 +18,24 @@ export class EntrybookListComponent implements OnInit {
 
   filterEntryBookList: string;
   filteredEntry: EntryBook[];
-  @Input() entryBook: any;
-  constructor(private store: Store< State>, private atService: PhoneBookService ) {
-    this.filteredEntry = EntryList;
-  }
   displayedColumns: Directory[];
   dataFromAPI: Directory;
 
+  constructor(private store: Store< State>, private atService: PhoneBookService ) {
+    this.filteredEntry = EntryList;
+ }
+
+
   ngOnInit() {
     this.displayedColumns = this.atService.getColumns();
-}
-
-openEntryList() {
-  console.log(this.displayedColumns);
-}
-
+ }
 
 filterEntryBook(value) {
-  // this.filterEntryBookList = value;
   this.filteredEntry =  value ? this.performFilter(this.filterEntryBookList) : EntryList;
-}
+ }
 
 performFilter(filterBy: string) {
   return EntryList.filter(x => x.person_name.indexOf(filterBy) !== -1);
-}
+ }
 }
 

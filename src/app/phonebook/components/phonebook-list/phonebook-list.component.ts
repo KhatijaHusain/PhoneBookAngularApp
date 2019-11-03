@@ -5,6 +5,7 @@ import { State } from '../../../store/directory.reducer';
 import { Store } from '@ngrx/store';
 import { GetDirectoryData } from '../../../store/directory.actions';
 import { EntryBook } from '../../../models/entry-book';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-phonebook-list',
@@ -19,8 +20,10 @@ export class PhonebookListComponent implements OnInit {
   dataFromAPI: Directory;
   filteredDirectory: Directory[];
   filterPhoneBookList: string;
+  closeResult: string;
 
-  constructor(private store: Store< State>, private atService: PhoneBookService ) {
+  constructor(private store: Store< State>, private atService: PhoneBookService,
+              private modalService: NgbModal ) {
     this.directoryData = this.atService.getColumns();
     this.filteredDirectory = this.directoryData;
   }
@@ -30,8 +33,23 @@ export class PhonebookListComponent implements OnInit {
     this.store.dispatch(new GetDirectoryData());
 }
 
-openEntryList(entryBook: any) {
+openEntriesModal(content, entryBook) {
   this.currentEntrybook = entryBook;
+  this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+}
+
+private getDismissReason(reason: any): string {
+  if (reason === 'ESC') {
+    return 'by pressing ESC';
+  } else if (reason === 'BACKDROP_CLICK') {
+    return 'by clicking on a backdrop';
+  } else {
+    return  `with: ${reason}`;
+  }
 }
 
 filterPhoneBook(value) {
@@ -44,7 +62,7 @@ performFilter(filterByValue: string) {
 }
 
 getPhoneBookName(findByValue: string) {
-    return this.directoryData.find(x => x.PhoneBookName.indexOf(findByValue) !== -1).PhoneBookName;
+    return this.directoryData.find(x => x.PhoneBookName.toLowerCase().indexOf(findByValue.toLowerCase()) !== -1).PhoneBookName;
  }
 }
 

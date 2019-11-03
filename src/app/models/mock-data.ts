@@ -56,8 +56,8 @@ export const DirectoryList: Directory[] = [
         EntryBook: [
             {
                 person_id: 4,
-                person_name: 'Arwa',
-                phone_no: 65128,
+                person_name: 'Zahra',
+                phone_no: 6512847,
                 phone_book_id: 3
             },
             {
@@ -104,20 +104,20 @@ export const DirectoryList: Directory[] = [
         EntryBook: [
             {
                 person_id: 12,
-                person_name: 'Hunaid',
+                person_name: 'Khuni',
                 phone_no: 437599,
                 phone_book_id: 5
             },
             {
                 person_id: 13,
-                person_name: 'Xiami',
-                phone_no: 457693,
+                person_name: 'Thiago',
+                phone_no: 658700,
                 phone_book_id: 5
             },
             {
                 person_id: 14,
-                person_name: 'Pamela',
-                phone_no: 977524,
+                person_name: 'Andre',
+                phone_no: 475990,
                 phone_book_id: 5
             }
         ]

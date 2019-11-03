@@ -1,5 +1,5 @@
 <div class='row' style = 'padding: 20px 0 20px 0'> 
-  <div class='col-4'><h5> Filter by PhoneBook</h5></div>
+  <div class='col-4'><h5> Filter by PhoneBook Name</h5></div>
   <div class='col-4'>
     <input #phoneBookInput type="text" [(ngModel)]='filterPhoneBookList' (input) = 'filterPhoneBook(phoneBookInput.value)' />
   </div>
@@ -16,16 +16,38 @@
   <tbody>
     <tr *ngFor = "let col of filteredDirectory">
         <td scope="row">{{col.index}}</td>
-        <td (click) = 'openEntryList(col.EntryBook)' class ='listItem'>{{col.PhoneBookName}}</td>       
+        <td (click) = 'openEntriesModal(content, col.EntryBook)' class ='listItem'>{{col.PhoneBookName}}</td>       
     </tr>
   </tbody>
 </table>
 <app-phonebook-add-modal></app-phonebook-add-modal>
 </div>
 <hr>
-<!-- <div class='row' style = 'padding-top: 50px'> 
-    <div class='col-2'><h1>Entries for the clicked phone book</h1></div>
-    <div *ngIf = 'filterPhoneBookList && filterPhoneBookList!=" "' class='col-4'><h1>{{getPhoneBookName(filterPhoneBookList)}}</h1></div>
-</div> -->
-
-<app-entrybook-list [entryBook]="currentEntrybook"></app-entrybook-list>
+<app-entrybook-list></app-entrybook-list>
+<ng-template #content let-modal>
+  <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Entries</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+  <div class="modal-body">    
+    <div class='table-responsive'>
+      <table class='table table-light table-bordered table-style' 
+        *ngIf='currentEntrybook && currentEntrybook.length'>
+        <thead>
+          <tr>
+            <th> Name</th>
+            <th> Phone Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor = "let col of currentEntrybook">
+              <td scope="row">{{col.person_name}}</td>
+              <td class ='listItem'>{{col.phone_no | appendCodePipe:"+27"}}</td>       
+          </tr>
+        </tbody>
+      </table>
+    </div>  
+  </div>      
+  </ng-template>
