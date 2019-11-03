@@ -35,7 +35,7 @@ filterEntryBook(value) {
  }
 
 performFilter(filterBy: string) {
-  return EntryList.filter(x => x.person_name.indexOf(filterBy) !== -1);
+  return EntryList.filter(x => x.person_name.toLowerCase().indexOf(filterBy.toLowerCase()) !== -1);
  }
 }
 

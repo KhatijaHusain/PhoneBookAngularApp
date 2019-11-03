@@ -58,7 +58,7 @@ filterPhoneBook(value) {
 }
 
 performFilter(filterByValue: string) {
-    return this.directoryData.filter(x => x.PhoneBookName.indexOf(filterByValue) !== -1);
+    return this.directoryData.filter(x => x.PhoneBookName.toLowerCase().indexOf(filterByValue.toLowerCase()) !== -1);
 }
 
 getPhoneBookName(findByValue: string) {

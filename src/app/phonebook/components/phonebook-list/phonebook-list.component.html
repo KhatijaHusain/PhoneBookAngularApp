@@ -1,5 +1,7 @@
-<div class='row' style = 'padding: 20px 0 20px 0'> 
-  <div class='col-4'><h5> Filter by PhoneBook Name</h5></div>
+<div class='row' style = 'padding: 20px 0 0 0'>
+<div class='col-4'><h3> PhoneBook List</h3></div></div>
+<div class='row' style = 'padding: 20px 0 20px 0'>
+  <div class='col-4'><h5> Filter by PhoneBook name</h5></div>
   <div class='col-4'>
     <input #phoneBookInput type="text" [(ngModel)]='filterPhoneBookList' (input) = 'filterPhoneBook(phoneBookInput.value)' />
   </div>
