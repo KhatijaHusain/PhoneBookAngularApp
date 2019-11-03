@@ -14,23 +14,29 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { PhoneBookAddModalComponent } from './phonebook/components/phonebook-add-modal/phonebook-add-modal.component';
 import { EntryBookAddModalComponent } from './phonebook/components/entrybook-add-modal/entrybook-add-modal.component';
+import { FormsModule } from '@angular/forms';
+import { AppendCodePipe } from './pipes/phone-number-format.pipe';
+import { EntrybookListComponent } from './phonebook/components/entry-book-list/entrybook-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     PhonebookListComponent,
+    EntrybookListComponent,
     PhoneBookAddModalComponent,
-    EntryBookAddModalComponent
+    EntryBookAddModalComponent,
+    AppendCodePipe
   ],
   imports: [
     NgbModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('benchmarkingView', reducer),
     EffectsModule.forRoot([ DirectoryEffects ]),
     HttpClientModule,
   ],
-  providers: [PhoneBookService, DirectoryMapper],
+  providers: [PhoneBookService, DirectoryMapper, AppendCodePipe],
   bootstrap: [AppComponent],
   entryComponents: [EntryBookAddModalComponent]
 })

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     styleUrls: ['./entrybook-add-modal.component.less']
 })
 export class EntryBookAddModalComponent {
-    closeResult: string;
+    // closeResult: string;
 
     constructor(public activeModal: NgbActiveModal) {}
 

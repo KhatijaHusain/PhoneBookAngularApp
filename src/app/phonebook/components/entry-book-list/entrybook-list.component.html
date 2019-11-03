@@ -1,0 +1,44 @@
+<h1 *ngIf = 'entryBook && entryBook.length'>Entries for phonebook clicked</h1>
+<div class='table-responsive'>
+<table class='table table-light table-bordered table-style' 
+  *ngIf='entryBook && entryBook.length'>
+  <thead>
+    <tr>
+      <th> Name</th>
+      <th> Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  *ngFor = "let col of entryBook">
+        <td scope="row">{{col.person_name}}</td>
+        <td class ='listItem'>{{col.phone_no | appendCodePipe:"+27"}}</td>       
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h1>All the Entries</h1>
+<div class='row' style = 'padding: 20px 0 20px 0'> 
+    <div class='col-4'><h5> Filter Entries</h5></div>
+    <div class='col-4'>
+      <input #entryBookInput type="text" [(ngModel)]='filterEntryBookList' (input) = 'filterEntryBook(entryBookInput.value)' />
+    </div>
+</div>
+
+<div class='table-responsive'>
+  <table class='table table-light table-bordered table-style' 
+    *ngIf='filteredEntry && filteredEntry.length'>
+    <thead>
+      <tr>
+        <th> Name</th>
+        <th> Phone Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor = "let col of filteredEntry">
+          <td scope="row">{{col.person_name}}</td>
+          <td class ='listItem'>{{col.phone_no | appendCodePipe:"+27"}}</td>       
+      </tr>
+    </tbody>
+  </table>
+</div>

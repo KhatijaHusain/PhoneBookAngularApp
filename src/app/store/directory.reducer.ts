@@ -17,8 +17,6 @@ export const defaultState = (): State => ({
 export const initialState: State = defaultState();
 
 export function reducer(state = initialState, action: directoryActions.Actions): State {
-    console.log('in reducer');
-    console.log(action);
     switch (action.type) {
 
         case directoryActions.UPDATE_DIRECTORY_RESULTS:

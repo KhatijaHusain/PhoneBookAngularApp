@@ -1,7 +1,12 @@
+<div class='row' style = 'padding: 20px 0 20px 0'> 
+  <div class='col-4'><h5> Filter by PhoneBook</h5></div>
+  <div class='col-4'>
+    <input #phoneBookInput type="text" [(ngModel)]='filterPhoneBookList' (input) = 'filterPhoneBook(phoneBookInput.value)' />
+  </div>
+</div>
 <div class='table-responsive'>
 <table class='table table-light table-bordered table-style' 
-  *ngIf='displayedColumns && displayedColumns.length'
-  (click)="tableclick.emit()">
+  *ngIf='directoryData && directoryData.length'>
   <thead>
     <tr>
       <th> Sr.No</th>
@@ -9,11 +14,18 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor = "let col of displayedColumns">
+    <tr *ngFor = "let col of filteredDirectory">
         <td scope="row">{{col.index}}</td>
-        <td>{{col.PhoneBookName}}</td>       
+        <td (click) = 'openEntryList(col.EntryBook)' class ='listItem'>{{col.PhoneBookName}}</td>       
     </tr>
   </tbody>
 </table>
 <app-phonebook-add-modal></app-phonebook-add-modal>
 </div>
+<hr>
+<!-- <div class='row' style = 'padding-top: 50px'> 
+    <div class='col-2'><h1>Entries for the clicked phone book</h1></div>
+    <div *ngIf = 'filterPhoneBookList && filterPhoneBookList!=" "' class='col-4'><h1>{{getPhoneBookName(filterPhoneBookList)}}</h1></div>
+</div> -->
+
+<app-entrybook-list [entryBook]="currentEntrybook"></app-entrybook-list>

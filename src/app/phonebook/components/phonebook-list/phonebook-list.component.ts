@@ -1,9 +1,10 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { PhoneBookService } from '../../../Service/phone-book-service';
 import { Directory } from '../../../models/directory';
 import { State } from '../../../store/directory.reducer';
 import { Store } from '@ngrx/store';
 import { GetDirectoryData } from '../../../store/directory.actions';
+import { EntryBook } from '../../../models/entry-book';
 
 @Component({
     selector: 'app-phonebook-list',
@@ -12,21 +13,38 @@ import { GetDirectoryData } from '../../../store/directory.actions';
   })
 
 export class PhonebookListComponent implements OnInit {
-  @Output() tableclick = new EventEmitter();
 
-  constructor(private store: Store< State>, private atService: PhoneBookService ) {}
-  displayedColumns: Directory[];
+  currentEntrybook: any;
+  directoryData: Directory[];
   dataFromAPI: Directory;
+  filteredDirectory: Directory[];
+  filterPhoneBookList: string;
+
+  constructor(private store: Store< State>, private atService: PhoneBookService ) {
+    this.directoryData = this.atService.getColumns();
+    this.filteredDirectory = this.directoryData;
+  }
 
   ngOnInit() {
-    this.displayedColumns = this.atService.getColumns();
     this.atService.getDirectoryResults().subscribe(x => this.dataFromAPI = x);
-    console.log('data APi');
-    console.log(this.dataFromAPI);
-    console.log('before action dispatched');
     this.store.dispatch(new GetDirectoryData());
-    console.log('after action dispatched');
-    console.log(this.displayedColumns);
 }
+
+openEntryList(entryBook: any) {
+  this.currentEntrybook = entryBook;
+}
+
+filterPhoneBook(value) {
+  this.filterPhoneBookList = value;
+  this.filteredDirectory =  this.filterPhoneBookList ? this.performFilter(this.filterPhoneBookList) : this.directoryData;
+}
+
+performFilter(filterByValue: string) {
+    return this.directoryData.filter(x => x.PhoneBookName.indexOf(filterByValue) !== -1);
+}
+
+getPhoneBookName(findByValue: string) {
+    return this.directoryData.find(x => x.PhoneBookName.indexOf(findByValue) !== -1).PhoneBookName;
+ }
 }
 

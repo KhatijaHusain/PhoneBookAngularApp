@@ -1,4 +1,4 @@
-import { ELEMENT_DATA } from '../models/mock-data';
+import { DirectoryList } from '../models/mock-data';
 import { Directory } from '../models/directory';
 import { HttpClient } from '@angular/common/http';
 import { DirectoryMapper } from './directory-mapper';
@@ -17,11 +17,10 @@ export class PhoneBookService {
 
 
     getDirectoryResults(): Observable< Directory> {
-        console.log('in service');
         return this.http.get< Directory>(this.directoryPath).pipe(
         map(result => this.benchmarkingResultsMapper.mapDirectoryResponse(result)));
     }
 
     getColumns(): Directory[] {
-      return ELEMENT_DATA; }
+      return DirectoryList; }
 }
