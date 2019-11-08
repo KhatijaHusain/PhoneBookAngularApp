@@ -16,7 +16,7 @@ export class GetDirectoryData implements Action {
 export class ExecuteSuccess implements Action {
     readonly type = EXECUTE_SUCCESS;
 
-    constructor(public payload: Directory) { }
+    constructor(public payload: Directory[]) { }
 }
 
 export class ExecuteFail implements Action {

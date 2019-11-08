@@ -17,26 +17,31 @@ export class PhonebookListComponent implements OnInit {
 
   currentEntrybook: any;
   directoryData: Directory[];
-  dataFromAPI: Directory;
+  dataFromAPI: Directory[];
   filteredDirectory: Directory[];
   filterPhoneBookList: string;
   closeResult: string;
+  personName: string;
+  errorMsg: string;
 
   constructor(private store: Store< State>, private atService: PhoneBookService,
               private modalService: NgbModal ) {
-    this.directoryData = this.atService.getColumns();
-    this.filteredDirectory = this.directoryData;
+      this.atService.getDirectoryResults().subscribe({
+        next: response => {this.dataFromAPI = response;
+                           this.filteredDirectory = this.dataFromAPI;
+      },
+        error: err => this.errorMsg = err
+      });
   }
 
   ngOnInit() {
-    this.atService.getDirectoryResults().subscribe(x => this.dataFromAPI = x);
     this.store.dispatch(new GetDirectoryData());
 }
 
 openEntriesModal(content, entryBook) {
   this.currentEntrybook = entryBook;
   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-    this.closeResult = `Closed with: ${result}`;
+  this.closeResult = `Closed with: ${result}`;
   }, (reason) => {
     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
@@ -54,15 +59,19 @@ private getDismissReason(reason: any): string {
 
 filterPhoneBook(value) {
   this.filterPhoneBookList = value;
-  this.filteredDirectory =  this.filterPhoneBookList ? this.performFilter(this.filterPhoneBookList) : this.directoryData;
+  this.filteredDirectory =  this.filterPhoneBookList ? this.performFilter(this.filterPhoneBookList) : this.dataFromAPI;
 }
 
 performFilter(filterByValue: string) {
-    return this.directoryData.filter(x => x.PhoneBookName.toLowerCase().indexOf(filterByValue.toLowerCase()) !== -1);
+    return this.dataFromAPI.filter(x => x.PhoneBookName.toLowerCase().indexOf(filterByValue.toLowerCase()) !== -1);
 }
 
 getPhoneBookName(findByValue: string) {
-    return this.directoryData.find(x => x.PhoneBookName.toLowerCase().indexOf(findByValue.toLowerCase()) !== -1).PhoneBookName;
+    return this.filteredDirectory.find(x => x.PhoneBookName.toLowerCase().indexOf(findByValue.toLowerCase()) !== -1).PhoneBookName;
+ }
+
+ displayEntries(message: string): void {
+  this.personName = message;
  }
 }
 

@@ -17,6 +17,7 @@ import { EntryBookAddModalComponent } from './phonebook/components/entrybook-add
 import { FormsModule } from '@angular/forms';
 import { AppendCodePipe } from './pipes/phone-number-format.pipe';
 import { EntrybookListComponent } from './phonebook/components/entry-book-list/entrybook-list.component';
+import { EntryBookService } from './Service/entrybook-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { EntrybookListComponent } from './phonebook/components/entry-book-list/e
     EffectsModule.forRoot([ DirectoryEffects ]),
     HttpClientModule,
   ],
-  providers: [PhoneBookService, DirectoryMapper, AppendCodePipe],
+  providers: [PhoneBookService, DirectoryMapper, AppendCodePipe, EntryBookService],
   bootstrap: [AppComponent],
   entryComponents: [EntryBookAddModalComponent]
 })

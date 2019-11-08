@@ -8,7 +8,7 @@
 </div>
 <div class='table-responsive'>
 <table class='table table-light table-bordered table-style' 
-  *ngIf='directoryData && directoryData.length'>
+  *ngIf='dataFromAPI'>
   <thead>
     <tr>
       <th> Sr.No</th>
@@ -17,15 +17,16 @@
   </thead>
   <tbody>
     <tr *ngFor = "let col of filteredDirectory">
-        <td scope="row">{{col.index}}</td>
-        <td (click) = 'openEntriesModal(content, col.EntryBook)' class ='listItem'>{{col.PhoneBookName}}</td>       
+        <td scope="row">{{col.phoneBookId}}</td>
+        <td (click) = 'openEntriesModal(content, col.entries)' class ='listItem'>{{col.phoneBookName}}</td>       
     </tr>
   </tbody>
 </table>
 <app-phonebook-add-modal></app-phonebook-add-modal>
 </div>
 <hr>
-<app-entrybook-list></app-entrybook-list>
+<div class="alert alert-primary" role="alert"><h3>Name clicked {{this.personName}}</h3></div>
+<app-entrybook-list (displayEntries) = 'displayEntries($event)'></app-entrybook-list>
 <ng-template #content let-modal>
   <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Entries</h4>
@@ -45,8 +46,8 @@
         </thead>
         <tbody>
           <tr  *ngFor = "let col of currentEntrybook">
-              <td scope="row">{{col.person_name}}</td>
-              <td class ='listItem'>{{col.phone_no | appendCodePipe:"+27"}}</td>       
+              <td scope="row">{{col.personName}}</td>
+              <td class ='listItem'>{{col.phoneNo | appendCodePipe:"+27"}}</td>       
           </tr>
         </tbody>
       </table>

@@ -8,7 +8,7 @@ export const DirectoryList: Directory[] = [
         EntryBook: [
             {
                 person_id: 1,
-                person_name: 'Harsha',
+                person_name: 'Haider',
                 phone_no: 142758,
                 phone_book_id: 1
             },

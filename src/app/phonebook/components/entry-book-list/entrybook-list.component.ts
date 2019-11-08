@@ -7,6 +7,7 @@ import { GetDirectoryData } from '../../../store/directory.actions';
 import { AppendCodePipe } from '../../../pipes/phone-number-format.pipe';
 import { EntryBook } from '../../../models/entry-book';
 import { EntryList } from '../../../models/mock-data';
+import { EntryBookService } from '../../../Service/entrybook-service';
 
 @Component({
     selector: 'app-entrybook-list',
@@ -20,22 +21,32 @@ export class EntrybookListComponent implements OnInit {
   filteredEntry: EntryBook[];
   displayedColumns: Directory[];
   dataFromAPI: Directory;
+  entryBookResponse: EntryBook[];
+  errorMsg: string;
+  @Output() displayEntries: EventEmitter< string > = new EventEmitter< string >();
 
-  constructor(private store: Store< State>, private atService: PhoneBookService ) {
+  constructor(private store: Store< State>, private atService: EntryBookService ) {
     this.filteredEntry = EntryList;
- }
-
+    this.atService.getEntrybookResults().subscribe(
+      {next: response => {this.entryBookResponse = response;
+                          this.filteredEntry = this.entryBookResponse;
+      },
+    error: err => this.errorMsg = err });
+  }
 
   ngOnInit() {
-    this.displayedColumns = this.atService.getColumns();
  }
 
-filterEntryBook(value) {
+  filterEntryBook(value) {
   this.filteredEntry =  value ? this.performFilter(this.filterEntryBookList) : EntryList;
  }
 
-performFilter(filterBy: string) {
+  performFilter(filterBy: string) {
   return EntryList.filter(x => x.person_name.toLowerCase().indexOf(filterBy.toLowerCase()) !== -1);
+ }
+
+ OnPersonClick(name: string) {
+   this.displayEntries.emit(name);
  }
 }
 

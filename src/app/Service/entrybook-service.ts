@@ -1,14 +1,15 @@
-import { DirectoryList } from '../models/mock-data';
-import { Directory } from '../models/directory';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DirectoryMapper } from './directory-mapper';
-import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Directory } from '../models/directory';
+import { tap, catchError } from 'rxjs/operators';
+import { DirectoryList } from '../models/mock-data';
+import { EntryBook } from '../models/entry-book';
 
 @Injectable()
-export class PhoneBookService {
-     private directoryPath = 'https://localhost:44341/api/directory';
+export class EntryBookService {
+    private directoryPath = 'https://localhost:44341/api/EntryBook';
 
     constructor(
         private http: HttpClient,
@@ -16,13 +17,13 @@ export class PhoneBookService {
     ) { }
 
 
-    getDirectoryResults(): Observable< Directory[]> {
-        return this.http.get< Directory[]>(this.directoryPath).pipe(
+    getEntrybookResults(): Observable< EntryBook[]> {
+        return this.http.get< EntryBook[]>(this.directoryPath).pipe(
         tap(result => console.log('All' + JSON.stringify(result))),
         catchError(this.handleError));
     }
 
-     private handleError(error: HttpErrorResponse) {
+    private handleError(error: HttpErrorResponse) {
          let errormsg = '';
          if (error.error instanceof ErrorEvent) {
              errormsg = `An error occured: ${error.error.message}`;

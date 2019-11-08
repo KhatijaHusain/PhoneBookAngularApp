@@ -5,13 +5,18 @@ import { DirectoryDto } from '../models/directory-dto';
 
 @Injectable()
 export class DirectoryMapper {
+    private directoryResult1: Directory[];
 
-    mapDirectoryResponse(directoryResult: DirectoryDto): Directory {
+    mapDirectoryResponse(directoryResult: DirectoryDto[]): Directory[] {
+        this.directoryResult1 = directoryResult;
+        return this.directoryResult1;
+    }
 
+    private mapDirectory(x: DirectoryDto): Directory {
         return {
-            index : directoryResult.index,
-            PhoneBookName: directoryResult.PhoneBookName,
-            EntryBook: directoryResult.EntryBook
+            index: x.index,
+            EntryBook: x.EntryBook,
+            PhoneBookName: x.PhoneBookName
         };
     }
 }
