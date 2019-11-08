@@ -63,11 +63,13 @@ filterPhoneBook(value) {
 }
 
 performFilter(filterByValue: string) {
-    return this.dataFromAPI.filter(x => x.PhoneBookName.toLowerCase().indexOf(filterByValue.toLowerCase()) !== -1);
+    console.log(this.dataFromAPI + 'perform');
+    return this.dataFromAPI.filter(x => x.phoneBookName.toLowerCase().indexOf(filterByValue.toLowerCase()) !== -1);
 }
 
 getPhoneBookName(findByValue: string) {
-    return this.filteredDirectory.find(x => x.PhoneBookName.toLowerCase().indexOf(findByValue.toLowerCase()) !== -1).PhoneBookName;
+    console.log(this.dataFromAPI + 'get');
+    return this.filteredDirectory.find(x => x.phoneBookName.toLowerCase().indexOf(findByValue.toLowerCase()) !== -1).phoneBookName;
  }
 
  displayEntries(message: string): void {

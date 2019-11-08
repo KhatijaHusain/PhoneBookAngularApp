@@ -3,209 +3,209 @@ import { EntryBook } from './entry-book';
 
 export const DirectoryList: Directory[] = [
     {
-        index: 1,
-        PhoneBookName: 'Office',
-        EntryBook: [
+        phoneBookId: 1,
+        phoneBookName: 'Office',
+        entries: [
             {
-                person_id: 1,
-                person_name: 'Haider',
-                phone_no: 142758,
-                phone_book_id: 1
+                personId: 1,
+                personName: 'Haider',
+                phoneNo: 142758,
+                phoneBookId: 1
             },
             {
-                person_id: 2,
-                person_name: 'Khatija',
-                phone_no: 65128,
-                phone_book_id: 1
+                personId: 2,
+                personName: 'Khatija',
+                phoneNo: 65128,
+                phoneBookId: 1
             },
             {
-                person_id: 3,
-                person_name: 'Zahra',
-                phone_no: 65967070,
-                phone_book_id: 1
+                personId: 3,
+                personName: 'Zahra',
+                phoneNo: 65967070,
+                phoneBookId: 1
             }
         ]
     },
     {
-        index: 2,
-        PhoneBookName: 'Home',
-        EntryBook: [
+        phoneBookId: 2,
+        phoneBookName: 'Home',
+        entries: [
             {
-                person_id: 4,
-                person_name: 'Huzefa',
-                phone_no: 547534,
-                phone_book_id: 2
+                personId: 4,
+                personName: 'Huzefa',
+                phoneNo: 547534,
+                phoneBookId: 2
             },
             {
-                person_id: 5,
-                person_name: 'Ram',
-                phone_no: 313869,
-                phone_book_id: 2
+                personId: 5,
+                personName: 'Ram',
+                phoneNo: 313869,
+                phoneBookId: 2
             },
             {
-                person_id: 6,
-                person_name: 'Rahim',
-                phone_no: 4869,
-                phone_book_id: 2
+                personId: 6,
+                personName: 'Rahim',
+                phoneNo: 4869,
+                phoneBookId: 2
             }
         ]
     },
     {
-        index: 3,
-        PhoneBookName: 'Kitty',
-        EntryBook: [
+        phoneBookId: 3,
+        phoneBookName: 'Kitty',
+        entries: [
             {
-                person_id: 4,
-                person_name: 'Zahra',
-                phone_no: 6512847,
-                phone_book_id: 3
+                personId: 4,
+                personName: 'Zahra',
+                phoneNo: 6512847,
+                phoneBookId: 3
             },
             {
-                person_id: 7,
-                person_name: 'Arwa',
-                phone_no: 65128,
-                phone_book_id: 3
+                personId: 7,
+                personName: 'Arwa',
+                phoneNo: 65128,
+                phoneBookId: 3
             },
             {
-                person_id: 8,
-                person_name: 'Jamela',
-                phone_no: 685690,
-                phone_book_id: 3
+                personId: 8,
+                personName: 'Jamela',
+                phoneNo: 685690,
+                phoneBookId: 3
             }
         ]
     },
     {
-        index: 4,
-        PhoneBookName: 'School',
-        EntryBook: [
+        phoneBookId: 4,
+        phoneBookName: 'School',
+        entries: [
             {
-                person_id: 9,
-                person_name: 'Hunaid',
-                phone_no: 437599,
-                phone_book_id: 4
+                personId: 9,
+                personName: 'Hunaid',
+                phoneNo: 437599,
+                phoneBookId: 4
             },
             {
-                person_id: 10,
-                person_name: 'Xiami',
-                phone_no: 457693,
-                phone_book_id: 4
+                personId: 10,
+                personName: 'Xiami',
+                phoneNo: 457693,
+                phoneBookId: 4
             },
             {
-                person_id: 11,
-                person_name: 'Pamela',
-                phone_no: 977524,
-                phone_book_id: 4
+                personId: 11,
+                personName: 'Pamela',
+                phoneNo: 977524,
+                phoneBookId: 4
             }
         ]
     },
     {
-        index: 5,
-        PhoneBookName: 'Society',
-        EntryBook: [
+        phoneBookId: 5,
+        phoneBookName: 'Society',
+        entries: [
             {
-                person_id: 12,
-                person_name: 'Khuni',
-                phone_no: 437599,
-                phone_book_id: 5
+                personId: 12,
+                personName: 'Khuni',
+                phoneNo: 437599,
+                phoneBookId: 5
             },
             {
-                person_id: 13,
-                person_name: 'Thiago',
-                phone_no: 658700,
-                phone_book_id: 5
+                personId: 13,
+                personName: 'Thiago',
+                phoneNo: 658700,
+                phoneBookId: 5
             },
             {
-                person_id: 14,
-                person_name: 'Andre',
-                phone_no: 475990,
-                phone_book_id: 5
+                personId: 14,
+                personName: 'Andre',
+                phoneNo: 475990,
+                phoneBookId: 5
             }
         ]
     }
 ];
 
 export const EntryList: EntryBook[] = [
-            {   person_id: 1,
-                person_name: 'Harsha',
-                phone_no: 142758,
-                phone_book_id: 1
+            {   personId: 1,
+                personName: 'Harsha',
+                phoneNo: 142758,
+                phoneBookId: 1
             },
             {
-                person_id: 2,
-                person_name: 'Khatija',
-                phone_no: 65128,
-                phone_book_id: 1
+                personId: 2,
+                personName: 'Khatija',
+                phoneNo: 65128,
+                phoneBookId: 1
             },
             {
-                person_id: 3,
-                person_name: 'Zahra',
-                phone_no: 65967070,
-                phone_book_id: 1
+                personId: 3,
+                personName: 'Zahra',
+                phoneNo: 65967070,
+                phoneBookId: 1
             },
             {
-                person_id: 4,
-                person_name: 'Huzefa',
-                phone_no: 547534,
-                phone_book_id: 2
+                personId: 4,
+                personName: 'Huzefa',
+                phoneNo: 547534,
+                phoneBookId: 2
             },
             {
-                person_id: 5,
-                person_name: 'Ram',
-                phone_no: 313869,
-                phone_book_id: 2
+                personId: 5,
+                personName: 'Ram',
+                phoneNo: 313869,
+                phoneBookId: 2
             },
             {
-                person_id: 6,
-                person_name: 'Rahim',
-                phone_no: 4869,
-                phone_book_id: 2
+                personId: 6,
+                personName: 'Rahim',
+                phoneNo: 4869,
+                phoneBookId: 2
             },
             {
-                person_id: 7,
-                person_name: 'Arwa',
-                phone_no: 65128,
-                phone_book_id: 3
+                personId: 7,
+                personName: 'Arwa',
+                phoneNo: 65128,
+                phoneBookId: 3
             },
             {
-                person_id: 8,
-                person_name: 'Jamela',
-                phone_no: 685690,
-                phone_book_id: 3
+                personId: 8,
+                personName: 'Jamela',
+                phoneNo: 685690,
+                phoneBookId: 3
             },
             {
-                person_id: 9,
-                person_name: 'Hunaid',
-                phone_no: 437599,
-                phone_book_id: 4
+                personId: 9,
+                personName: 'Hunaid',
+                phoneNo: 437599,
+                phoneBookId: 4
             },
             {
-                person_id: 10,
-                person_name: 'Xiami',
-                phone_no: 457693,
-                phone_book_id: 4
+                personId: 10,
+                personName: 'Xiami',
+                phoneNo: 457693,
+                phoneBookId: 4
             },
             {
-                person_id: 11,
-                person_name: 'Pamela',
-                phone_no: 977524,
-                phone_book_id: 4
+                personId: 11,
+                personName: 'Pamela',
+                phoneNo: 977524,
+                phoneBookId: 4
             },
             {
-                person_id: 12,
-                person_name: 'Hunaid',
-                phone_no: 437599,
-                phone_book_id: 5
+                personId: 12,
+                personName: 'Hunaid',
+                phoneNo: 437599,
+                phoneBookId: 5
             },
             {
-                person_id: 13,
-                person_name: 'Xiami',
-                phone_no: 457693,
-                phone_book_id: 5
+                personId: 13,
+                personName: 'Xiami',
+                phoneNo: 457693,
+                phoneBookId: 5
             },
             {
-                person_id: 14,
-                person_name: 'Pamela',
-                phone_no: 977524,
-                phone_book_id: 5
+                personId: 14,
+                personName: 'Pamela',
+                phoneNo: 977524,
+                phoneBookId: 5
             }
 ];

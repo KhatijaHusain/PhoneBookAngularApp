@@ -22,9 +22,9 @@ export class DirectoryEffects {
             catchError(error => of(new ExecuteFail(error),
                 new UpdateDirectoryResults(
                     {
-                       index : 0,
-                       EntryBook: [],
-                       PhoneBookName: ''
+                        phoneBookId : 0,
+                       entries: [],
+                       phoneBookName: ''
                 }) ))
         );
 }

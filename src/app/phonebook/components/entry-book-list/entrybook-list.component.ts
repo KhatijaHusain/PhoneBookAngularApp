@@ -42,7 +42,7 @@ export class EntrybookListComponent implements OnInit {
  }
 
   performFilter(filterBy: string) {
-  return EntryList.filter(x => x.person_name.toLowerCase().indexOf(filterBy.toLowerCase()) !== -1);
+  return EntryList.filter(x => x.personName.toLowerCase().indexOf(filterBy.toLowerCase()) !== -1);
  }
 
  OnPersonClick(name: string) {

@@ -14,9 +14,9 @@ export class DirectoryMapper {
 
     private mapDirectory(x: DirectoryDto): Directory {
         return {
-            index: x.index,
-            EntryBook: x.EntryBook,
-            PhoneBookName: x.PhoneBookName
+            phoneBookId: x.phoneBookId,
+            entries: x.entries,
+            phoneBookName: x.phoneBookName
         };
     }
 }
